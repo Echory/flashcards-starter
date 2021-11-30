@@ -20,4 +20,17 @@ describe('Turn', function() {
     const turn = new Turn('Maple syrup', card);
     expect(turn.guess).to.equal('Maple syrup');
   });
+
+  it('should store a card', function() {
+    const card = new Card();
+    const turn = new Turn('Maple syrup', card);
+    expect(turn.card).to.equal(card);
+  });
+
+  it('should return guess', function() {
+    const card = new Card();
+    const turn = new Turn('a guess', card);
+    const guess = turn.returnGuess();
+    expect(guess).to.equal('a guess');
+  });
 });
