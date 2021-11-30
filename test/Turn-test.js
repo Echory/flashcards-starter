@@ -47,4 +47,13 @@ describe('Turn', function() {
     const guessEvaluation = turn.evaluateGuess()
     expect(guessEvaluation).to.equal(false);
   });
+
+  it('should give feedback', function() {
+    const card = new Card(1, 'Which animal is not a mammal?', ['zebra', 'cat', 'lizard'], 'lizard');
+    const turn = new Turn('zebra', card);
+    const guessEvaluation = turn.evaluateGuess();
+    const feedback = turn.giveFeedback();
+    expect(guessEvaluation).to.equal(false);
+    expect(feedback).to.equal('incorrect');
+  })
 });

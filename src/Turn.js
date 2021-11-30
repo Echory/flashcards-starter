@@ -15,6 +15,12 @@ class Turn {
     }
     return false;
   }
+  giveFeedback() {
+    if(this.guess === true){
+      return 'correct'
+    }
+    return 'incorrect'
+  }
 }
 
 module.exports = Turn
