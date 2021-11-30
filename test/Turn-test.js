@@ -33,4 +33,11 @@ describe('Turn', function() {
     const guess = turn.returnGuess();
     expect(guess).to.equal('a guess');
   });
+
+  it('should return card', function() {
+    const card = new Card();
+    const turn = new Turn('a guess', card);
+    const returnedCard = turn.returnCard();
+    expect(returnedCard).to.equal(card);
+  });
 });
