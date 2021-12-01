@@ -4,6 +4,7 @@ const Deck = require('../src/Deck');
 const expect = chai.expect;
 
 const Round = require('../src/Round');
+const Turn = require('../src/Turn');
 
 describe('Round', function() {
 
@@ -34,6 +35,23 @@ describe('Round', function() {
   });
 
   it('should create a new instance of turn', function() {
+    const card = new Card(1,
+      "What allows you to define a set of related information using key-value pairs?",
+      ["object", "array", "function"],
+      "object");
+    const turn = new Turn("object", card);
+    expect(turn).to.be.an.instanceOf(Turn);
+  });
 
+  it('should update turn count whether guess is correct or incorrect', function() {
+    const card = new Card(1,
+      "What allows you to define a set of related information using key-value pairs?",
+      ["object", "array", "function"],
+      "object");
+    const turn = new Turn("object", card);
+    const round = new Round([]);
+    expect(round.turns).to.equal(0);
+    round.takeTurn();
+    expect(round.turns).to.equal(1);
   });
 })
