@@ -118,4 +118,16 @@ describe('Round', function() {
     const percentageResult2 = round.calculatePercentCorrect();
     expect(percentageResult2).to.equal(50);
   })
+
+  it('should print round over when round is over', function() {
+    const card1 = new Card(1, "What allows you to define a set of related information using key-value pairs?", ["object", "array", "function"], "object");
+    const card2 = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+
+    const deck = new Deck([card1, card2]);
+    const round = new Round(deck);
+    round.takeTurn('object');
+    round.takeTurn('function');
+    const roundResult = round.endRound();
+    expect(roundResult).to.equal('** Round over! ** You answered 50% of the questions correctly!')
+  });
 })

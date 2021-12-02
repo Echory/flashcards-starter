@@ -22,6 +22,9 @@ class Round {
     let totalAnswers = this.turns;
     return Math.floor((correctAnswers / totalAnswers) * 100);
   }
+  endRound() {
+    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
+  }
 }
 
 module.exports = Round
