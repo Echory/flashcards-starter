@@ -11,8 +11,8 @@ class Round {
   }
   takeTurn(guess) {
     const turn = new Turn(guess, this.returnCurrentCard());
-    if(turn.evaluateGuess === false) {
-      this.incorrectGuesses.push(guess);
+    if(turn.evaluateGuess() === false) {
+      this.incorrectGuesses.push(turn.card.id);
     }
     this.turns ++;
     return turn.giveFeedback();
