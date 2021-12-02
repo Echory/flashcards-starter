@@ -17,6 +17,11 @@ class Round {
     this.turns ++;
     return turn.giveFeedback();
   }
+  calculatePercentCorrect() {
+    let correctAnswers = this.turns - this.incorrectGuesses.length;
+    let totalAnswers = this.turns;
+    return Math.floor((correctAnswers / totalAnswers) * 100);
+  }
 }
 
 module.exports = Round

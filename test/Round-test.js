@@ -104,4 +104,18 @@ describe('Round', function() {
     const response = round.takeTurn("function");
     expect(response).to.equal("incorrect")
   });
+
+  it('should return percentage of correct guesses', function() {
+    const card1 = new Card(1, "What allows you to define a set of related information using key-value pairs?", ["object", "array", "function"], "object");
+    const card2 = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+
+    const deck = new Deck([card1, card2]);
+    const round = new Round(deck);
+    round.takeTurn('object');
+    const percentageResult1 = round.calculatePercentCorrect();
+    expect(percentageResult1).to.equal(100);
+    round.takeTurn('function');
+    const percentageResult2 = round.calculatePercentCorrect();
+    expect(percentageResult2).to.equal(50);
+  })
 })
