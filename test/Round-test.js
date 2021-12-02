@@ -48,10 +48,25 @@ describe('Round', function() {
       "What allows you to define a set of related information using key-value pairs?",
       ["object", "array", "function"],
       "object");
-    const turn = new Turn("object", card);
-    const round = new Round([]);
+    const deck = new Deck([card]);   
+    const round = new Round(deck);
     expect(round.turns).to.equal(0);
-    round.takeTurn();
+    round.takeTurn('object');
     expect(round.turns).to.equal(1);
+  });
+
+  it('should change the next card in deck to be current card', function() {
+    const card1 = new Card(1, "What allows you to define a set of related information using key-value pairs?", ["object", "array", "function"], "object");
+    const card2 = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    const card3 = new Card(4, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "accessor method");
+    const deck = new Deck([card1, card2, card3])
+    const round = new Round(deck);
+
+    const result = round.returnCurrentCard();
+    expect(result).to.deep.equal(card1);
+    // round.takeTurn('array');
+    // expect(result).to.deep.equal(card2);
+    // round.takeTurn('array');
+    // expect(result).to.deep.equal(card3);
   });
 })
