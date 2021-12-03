@@ -23,6 +23,7 @@ class Round {
     return Math.floor((correctAnswers / totalAnswers) * 100);
   }
   endRound() {
+    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
     return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
   }
 }
